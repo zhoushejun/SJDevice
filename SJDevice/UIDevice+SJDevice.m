@@ -21,12 +21,12 @@
 @implementation UIDevice (SJDevice)
 
 /** 获取总内存大小 */
-- (long long)getTotalMemorySize {
+- (unsigned long long)totalMemorySize {
     return [NSProcessInfo processInfo].physicalMemory;
 }
 
 /** 获取已使用内存 */
-- (double)getUsedMemory {
+- (unsigned long)usedMemorySize {
     task_basic_info_data_t taskInfo;
     mach_msg_type_number_t infoCount = TASK_BASIC_INFO_COUNT;
     kern_return_t kernReturn = task_info(mach_task_self(),
@@ -181,7 +181,7 @@
 - (NSInteger)wifiSignalStrength{
     
     UIApplication *app = [UIApplication sharedApplication];
-    UIView *statusBar = [app valueForKey:@"statusBar"];
+//    UIView *statusBar = [app valueForKey:@"statusBar"];
     //iPhoneX
     //    UIView *foregroundView = [statusBar valueForKeyPath:@"statusBar.foregroundView"];
     //    NSArray *subviews = [foregroundView subviews];
@@ -198,7 +198,7 @@
     
     NSInteger signalStrength = [[dataNetworkItemView valueForKey:@"_wifiStrengthBars"] integerValue];
     
-    NSLog(@"signal %d", signalStrength);
+    NSLog(@"signal %ld", (long)signalStrength);
     
     return signalStrength;
 }
