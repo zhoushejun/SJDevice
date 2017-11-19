@@ -6,6 +6,9 @@
 //  Copyright © 2017年 jocentzhou. All rights reserved.
 //
 
+/**
+ 参考资料：http://www.jianshu.com/p/deab6550553a
+ */
 #import <UIKit/UIKit.h>
 
 @interface UIDevice (SJDevice)
@@ -15,14 +18,21 @@
 
  @return 总内存大小
  */
--(long long)getTotalMemorySize;
+-(unsigned long long)totalMemorySize;
+
+/**
+ 获取已使用内存
+
+ @return 已使用内存
+ */
+- (unsigned long)usedMemorySize;
 
 /**
  获取总磁盘容量
 
  @return 总磁盘容量
  */
--(long long)getTotalDiskSize;
+-(long long)totalDiskSize;
 
 /**
  获取可用磁盘容量
